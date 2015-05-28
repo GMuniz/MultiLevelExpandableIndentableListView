@@ -18,15 +18,6 @@ import com.oissela.software.sampleapp.model.MyContent;
  * Some of this code is copied from https://developer.android.com/training/material/lists-cards.html
  */
 public class MyAdapter extends MultiLevelExpIndListAdapter {
-    /**
-     * View type of an item or group.
-     */
-    public static final int VIEW_TYPE_ITEM = 0;
-
-    /**
-     * View type of the content.
-     */
-    private static final int VIEW_TYPE_CONTENT = 1;
 
     /**
      * This is called when the user click on an item or group.
@@ -89,13 +80,13 @@ public class MyAdapter extends MultiLevelExpIndListAdapter {
         View v;
         RecyclerView.ViewHolder viewHolder;
         switch (viewType) {
-            case VIEW_TYPE_ITEM:
+            case MyComment.VIEW_TYPE_ITEM:
                 int resource = R.layout.recyclerview_item;
                 v = LayoutInflater.from(parent.getContext())
                         .inflate(resource, parent, false);
                 viewHolder = new CommentViewHolder(v);
                 break;
-            case VIEW_TYPE_CONTENT:
+            case MyContent.VIEW_TYPE_CONTENT:
                 resource = R.layout.recyclerview_content;
                 v = LayoutInflater.from(parent.getContext())
                         .inflate(resource, parent, false);
@@ -114,7 +105,7 @@ public class MyAdapter extends MultiLevelExpIndListAdapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         int viewType = getItemViewType(position);
         switch (viewType) {
-            case VIEW_TYPE_ITEM:
+            case MyComment.VIEW_TYPE_ITEM:
                 CommentViewHolder cvh = (CommentViewHolder) viewHolder;
                 MyComment comment = (MyComment) getItemAt(position);
 
@@ -138,7 +129,7 @@ public class MyAdapter extends MultiLevelExpIndListAdapter {
                     cvh.hiddenCommentsCountTextView.setVisibility(View.GONE);
                 }
                 break;
-            case VIEW_TYPE_CONTENT:
+            case MyContent.VIEW_TYPE_CONTENT:
                 ContentViewHolder contentVH = (ContentViewHolder) viewHolder;
                 MyContent content = (MyContent) getItemAt(position);
                 contentVH.contentTextView.setText(content.content);
@@ -150,8 +141,6 @@ public class MyAdapter extends MultiLevelExpIndListAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0)
-            return VIEW_TYPE_CONTENT;
-        return VIEW_TYPE_ITEM;
+        return getItemAt(position).getViewType(position);
     }
 }

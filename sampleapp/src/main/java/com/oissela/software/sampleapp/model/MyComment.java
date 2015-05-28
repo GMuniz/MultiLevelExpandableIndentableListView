@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyComment implements MultiLevelExpIndListAdapter.ExpIndData {
+
+    /**
+     * View type of an item or group.
+     */
+    public static final int VIEW_TYPE_ITEM = 0;
+
     private int mIndentation;
     private List<MyComment> mChildren;
     private boolean mIsGroup;
@@ -40,6 +46,11 @@ public class MyComment implements MultiLevelExpIndListAdapter.ExpIndData {
     @Override
     public void setGroupSize(int groupSize) {
         mGroupSize = groupSize;
+    }
+
+    @Override
+    public int getViewType(final int position) {
+        return 0;
     }
 
     public int getGroupSize() {

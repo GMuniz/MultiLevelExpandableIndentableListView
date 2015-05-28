@@ -84,10 +84,18 @@ public class MainActivity extends ActionBarActivity {
             });
             mRecyclerView.setAdapter(mAdapter);
 
-            MyContent content = getDummyContent();
-            mAdapter.add(content);
-            List<MyComment> comments = getDummyComments();
-            mAdapter.addAll(comments);
+            mAdapter.add(getDummyContent());
+            mAdapter.addAll(getDummyComments());
+            mAdapter.add(getDummyContent());
+            mAdapter.addAll(getDummyComments());
+            mAdapter.add(getDummyContent());
+            mAdapter.addAll(getDummyComments());
+            mAdapter.add(getDummyContent());
+            mAdapter.addAll(getDummyComments());
+            mAdapter.add(getDummyContent());
+            mAdapter.addAll(getDummyComments());
+            mAdapter.add(getDummyContent());
+            mAdapter.addAll(getDummyComments());
 
             if (savedInstanceState != null) {
                 List<Integer> groups = savedInstanceState.getIntegerArrayList(GROUPS_KEY);
