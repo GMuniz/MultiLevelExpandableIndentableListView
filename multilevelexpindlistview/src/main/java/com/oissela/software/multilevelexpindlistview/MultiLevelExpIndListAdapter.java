@@ -95,6 +95,14 @@ public abstract class MultiLevelExpIndListAdapter extends RecyclerView.Adapter {
          * @param indentation The level of indentation in the range [0, n-1]
          */
         //int setIndentation(int indentation);
+
+        /**
+         * Note: This method is not strictly called by MultiLevelExpIndListAdapter, only when using
+         * multiple types of views.
+         *
+         * @return the type of view.
+         */
+        int getViewType(int position);
     }
 
     public MultiLevelExpIndListAdapter() {

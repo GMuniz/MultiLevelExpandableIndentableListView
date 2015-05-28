@@ -202,6 +202,11 @@ public class TestMultiLevelExpIndListAdapter extends AndroidTestCase {
             mGroupSize = groupSize;
         }
 
+        @Override
+        public int getViewType(final int position) {
+            return 0;
+        }
+
         public void addChild(MockData child) {
             mChildren.add(child);
         }
